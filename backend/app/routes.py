@@ -68,36 +68,32 @@ def accountdeets():
 
     })
 
-@app.route('/home/<user>')
-def home():
 
-# @app.route('/api/admin')
-# def admin():
-#     users = User.query.all()
-#     contactMessages = Contact.query.all()
-#     contacts = []
-#     usersResponse = []
-#     for user in users:
-#         d = user.__dict__
-#         if '_sa_instance_state' in d:
-#             del d['_sa_instance_state']
-#         usersResponse.append(d)
 #
-#     for cont in contactMessages:
-#         d = cont.__dict__
-#         if '_sa_instance_state' in d:
-#             del d['_sa_instance_state']
-#         contacts.append(d)
-#     admin = {
-#         'contacts': contacts,
-#         'users': usersResponse
-#     }
-#     return jsonify(admin)
+# @app.route('/projdeets',methods=['GET', 'POST'])
+# def projdeets():
+#     currentProjName= request.json["CUE"]['currentProjName']
+#     project= Project.query
 
 
-@app.route('/api/load')
-def load():
-    return jsonify({"load": "success"})
+@app.route('/api/projdeets')
+def projdeets():
+    # users = User.query.all()
+    projects = Project.query.all()
+    projects_final = []
+    # usersResponse = []
+    for project in projects:
+        d = project.__dict__
+        if '_sa_instance_state' in d:
+            del d['_sa_instance_state']
+        projects_final.append(d)
+    return jsonify(projects_final)
+
+    @app.route('/api/load')
+    def load():
+        return jsonify({"load": "success"})
+
+
 
 # New routes designed for TAI
 
