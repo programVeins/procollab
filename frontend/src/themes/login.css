@@ -1,0 +1,37 @@
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 70px 0px 70px 0px;
+  }
+  
+  .profile-inner {
+    width: 450px;
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0px 0px 50px  rgba(102, 72, 60, 0.15);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+  }
+  
+  .profile-wrapper .profile-control:focus {
+    border-color: #167bff;
+    box-shadow: none;
+  }
+  
+  .profile-wrapper h2 {
+    text-align: center;
+    margin: 0;
+    line-height: 1;
+    padding-bottom: 30px;
+  }
+
+  .custom-select select {
+    color: #ffffff ;
+  }
+
+  .test {
+    border: 1px solid red;
+  }

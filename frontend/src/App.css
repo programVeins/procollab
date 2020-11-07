@@ -1,38 +1,59 @@
 .App {
   text-align: center;
+  background-color: rgb(252, 238, 230)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap');
+
+* {
+  font-family: 'Jost', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.font-bold {
+  font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.font-med {
+  font-weight: 500;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.links {
+  text-decoration: none !important;
+  color: rgb(235, 76, 65);
+}
+
+.links:hover {
+  text-decoration: none !important;
+  color: rgb(190, 61, 52);
+}
+
+.picker {
+  margin-top: auto;
+  float: right;
+  min-width: 200px;
+}
+
+.picker-group {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 25px;
+  padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+::placeholder { 
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:-ms-input-placeholder { 
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+}
+
+::-ms-input-placeholder { 
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
 }
