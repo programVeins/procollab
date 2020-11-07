@@ -1,7 +1,8 @@
 from app import app, db
 from app.models import User
 
-def logincheck(umail,upwd):
+
+def logincheck(umail, upwd):
     isUserPresent = User.query.filter_by(email=umail).first()
     if (isUserPresent is None):
         print("Email not found")

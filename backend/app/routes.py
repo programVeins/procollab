@@ -69,6 +69,7 @@ def accountdeets():
     })
 
 
+<<<<<<< HEAD
 # @app.route('/api/admin')
 # def admin():
 #     users = User.query.all()
@@ -91,3 +92,41 @@ def accountdeets():
 #         'users': usersResponse
 #     }
 #     return jsonify(admin)
+=======
+#
+# @app.route('/projdeets',methods=['GET', 'POST'])
+# def projdeets():
+#     currentProjName= request.json["CUE"]['currentProjName']
+#     project= Project.query
+
+
+@app.route('/api/projdeets')
+def projdeets():
+    # users = User.query.all()
+    projects = Project.query.all()
+    projects_final = []
+    # usersResponse = []
+    for project in projects:
+        d = project.__dict__
+        if '_sa_instance_state' in d:
+            del d['_sa_instance_state']
+        projects_final.append(d)
+    return jsonify(projects_final)
+
+    @app.route('/api/load')
+    def load():
+        return jsonify({"load": "success"})
+
+
+
+# New routes designed for TAI
+
+# @app.route('/api/contactus', methods=['GET', 'POST'])
+# def contactus():
+#     CD = request.json['contact']
+#     newContactMess = Contact(name=CD["name"], email=CD["email"], city=CD["city"], contactnum=CD["contactnum"],
+#                              product=CD["product"], message=CD["message"])
+#     db.session.add(newContactMess)
+#     db.session.commit()
+#     return jsonify({"contact": "success"})
+>>>>>>> f1d168ad1e4287d1822bc8038fce6134d38e0806

@@ -4,7 +4,7 @@ from flask_login import UserMixin
 
 
 class User(UserMixin, db.Model):
-    __tablename__="User"
+    __tablename__ = "User"
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(64), index=True, unique=False, nullable=False)
     lastname = db.Column(db.String(64), index=True, unique=False)
@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     dept = db.Column(db.Integer(), db.ForeignKey('Dept.id'))
     projects = db.relationship('Project', backref='user')
-    isstud=db.Column(db.Boolean)
+    isstud = db.Column(db.Boolean)
 
     def __repr__(self):
         return '<User {}>'.format(self.firstname)
@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
 class Dept(db.Model):
     __tablename__ = "Dept"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32), index=True, unique=False, nullable=False)
+    name = db.Column(db.String(32), index=True, unique=True, nullable=False)
     users = db.relationship('User', backref='department')
 
     def __repr__(self):
@@ -46,7 +46,7 @@ class Position(db.Model):
 class Project(db.Model):
     __tablename__ = "Project"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), index=True, unique=False, nullable=False)
+    name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     position = db.Column(db.Integer(), db.ForeignKey('Position.id'))
     ideaBy = db.Column(db.Integer(), db.ForeignKey('User.id'))
 
