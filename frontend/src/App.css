@@ -58,11 +58,11 @@
   font-weight: 300;
 }
 
-.header {
+.fleft {
   float: left;
 }
 
-.logout {
+.fright {
   float: right;
 }
 
