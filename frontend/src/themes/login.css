@@ -5,6 +5,14 @@
     text-align: left;
     padding: 70px 0px 70px 0px;
   }
+
+  .profile-wrapper-l {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 140px 0px 140px 0px;
+  }
   
   .profile-inner {
     width: 450px;
@@ -33,5 +41,5 @@
   }
 
   .test {
-    border: 1px solid red;
+    border: 1px solid rgb(0, 38, 255);
   }

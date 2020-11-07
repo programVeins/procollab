@@ -68,8 +68,6 @@ def accountdeets():
 
     })
 
-@app.route('/home/<user>')
-def home():
 
 # @app.route('/api/admin')
 # def admin():
@@ -93,19 +91,3 @@ def home():
 #         'users': usersResponse
 #     }
 #     return jsonify(admin)
-
-
-@app.route('/api/load')
-def load():
-    return jsonify({"load": "success"})
-
-# New routes designed for TAI
-
-# @app.route('/api/contactus', methods=['GET', 'POST'])
-# def contactus():
-#     CD = request.json['contact']
-#     newContactMess = Contact(name=CD["name"], email=CD["email"], city=CD["city"], contactnum=CD["contactnum"],
-#                              product=CD["product"], message=CD["message"])
-#     db.session.add(newContactMess)
-#     db.session.commit()
-#     return jsonify({"contact": "success"})

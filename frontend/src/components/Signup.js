@@ -21,7 +21,7 @@ export default class SignUp extends Component {
           dept: '',
           email: '',
           password: '',
-          isStud: true,
+          isStud: 'true',
           modalmess : 'Please fill all required fields',
           touched: {
             firstname: false,
@@ -73,7 +73,7 @@ export default class SignUp extends Component {
             email: this.state.email,
             dept: this.state.dept,
             password: this.state.password,
-            isStud: this.state.isStud
+            isstud: (this.state.isStud === 'true') ? true : false
           }
       
           axios.post(backEndUrl + '/api/postsignup', { userData })
@@ -85,7 +85,7 @@ export default class SignUp extends Component {
                 }
                 else {
                   this.setState({loading: false});
-                  <Redirect to="/dashboard"/>
+                  this.props.setIsLoggedIn(true)
                 }    
             })
             .catch(error => {
@@ -131,6 +131,9 @@ export default class SignUp extends Component {
     }
     
     render() {
+      console.log(this.state)
+        if (this.props.isLoggedIn)
+            return <Redirect to="/dashboard"/>
         const errors = this.validate(this.state.firstname, this.state.lastname,
             this.state.dept, this.state.email, this.state.password); 
         return (
@@ -199,10 +202,10 @@ export default class SignUp extends Component {
                             <MenuItem value="IT">IT</MenuItem>
                             <MenuItem value="BME">BME</MenuItem>
                             <MenuItem value="EEE">EEE</MenuItem>
-                            <MenuItem value="Mech">Mech</MenuItem>
+                            <MenuItem value="MECH">MECH</MenuItem>
                             <MenuItem value="ECE">ECE</MenuItem>
-                            <MenuItem value="Chem">Chem</MenuItem>
-                            <MenuItem value="Civil">Civil</MenuItem>
+                            <MenuItem value="CHEM">CHEM</MenuItem>
+                            <MenuItem value="CIVIL">CIVIL</MenuItem>
                           </Select>
                           <FormFeedback className="d-block px-1">{errors.dept}</FormFeedback>
                         </div>
@@ -210,20 +213,24 @@ export default class SignUp extends Component {
                         <div className="form-group">
                           <label className="font-med mr-5">Are you a Student?</label>
                           <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"/>
-                            <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                            <input type="radio" id="yes" name="isStud"
+                            class="custom-control-input" value='true'
+                            onChange={this.handleInputChange}/>
+                            <label class="custom-control-label" for="yes">Yes</label>
                           </div>
                           <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input"/>
-                            <label class="custom-control-label" for="customRadioInline2">No</label>
+                            <input type="radio" id="no" name="isStud"
+                            class="custom-control-input" value='false'
+                            onChange={this.handleInputChange}/>
+                            <label class="custom-control-label" for="no">No</label>
                           </div>
                         </div>
 
                         <br/>
-                        <button type="submit" className="btn btn-danger btn-block dark"><p className="font-bold">Sign Up</p></button>
+                        <button type="submit" className="btn btn-danger btn-block dark "><x className="font-bold">Sign Up</x></button>
                         <br/>
                         <p className="forgot-password text-center">
-                        Already have an account? <Link to="/sign-in" className="links">Sign In</Link>
+                        Already have an account? <Link to="/signin" className="links">Sign In</Link>
                         </p>
                     </form>
                 </div>

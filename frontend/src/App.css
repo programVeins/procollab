@@ -57,3 +57,15 @@
   font-family: 'Jost', sans-serif;
   font-weight: 300;
 }
+
+.header {
+  float: left;
+}
+
+.logout {
+  float: right;
+}
+
+.topbar {
+  padding-bottom: 40px;
+}
