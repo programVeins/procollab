@@ -50,19 +50,6 @@ class Project(db.Model):
     position = db.Column(db.Integer(), db.ForeignKey('Position.id'))
     ideaBy = db.Column(db.Integer(), db.ForeignKey('User.id'))
 
-
-# class Contact(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(64), index=True, unique=False)
-#     email = db.Column(db.String(120), index=True, unique=False)
-#     city = db.Column(db.String(64), index=True, unique=False)
-#     contactnum = db.Column(db.String(64), index=True, unique=False)
-#     product = db.Column(db.String(200), index=True, unique=False)
-#     message = db.Column(db.String(500), index=True, unique=False)
-
-# def __repr__(self):
-#     return '<Contact {}>'.format(self.name)
-
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))

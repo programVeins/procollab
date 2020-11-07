@@ -69,49 +69,35 @@ def accountdeets():
     })
 
 
-<<<<<<< HEAD
-# @app.route('/api/admin')
-# def admin():
-#     users = User.query.all()
-#     contactMessages = Contact.query.all()
-#     contacts = []
-#     usersResponse = []
-#     for user in users:
-#         d = user.__dict__
-#         if '_sa_instance_state' in d:
-#             del d['_sa_instance_state']
-#         usersResponse.append(d)
-#
-#     for cont in contactMessages:
-#         d = cont.__dict__
-#         if '_sa_instance_state' in d:
-#             del d['_sa_instance_state']
-#         contacts.append(d)
-#     admin = {
-#         'contacts': contacts,
-#         'users': usersResponse
-#     }
-#     return jsonify(admin)
-=======
-#
-# @app.route('/projdeets',methods=['GET', 'POST'])
-# def projdeets():
-#     currentProjName= request.json["CUE"]['currentProjName']
-#     project= Project.query
-
-
 @app.route('/api/projdeets')
 def projdeets():
-    # users = User.query.all()
+    users = User.query.all()
+    users_final = []
     projects = Project.query.all()
     projects_final = []
-    # usersResponse = []
+    positions = Position.query.all()
+    positions_final = []
     for project in projects:
         d = project.__dict__
         if '_sa_instance_state' in d:
             del d['_sa_instance_state']
         projects_final.append(d)
-    return jsonify(projects_final)
+    for user in users:
+        d = user.__dict__
+        if '_sa_instance_state' in d:
+            del d['_sa_instance_state']
+        users_final.append(d)
+    for position in positions:
+        d = position.__dict__
+        if '_sa_instance_state' in d:
+            del d['_sa_instance_state']
+        positions_final.append(d)
+
+    return jsonify({
+        "projects" : projects_final,
+        "users" : users_final,
+        "positions" : positions_final
+        })
 
     @app.route('/api/load')
     def load():
@@ -119,14 +105,3 @@ def projdeets():
 
 
 
-# New routes designed for TAI
-
-# @app.route('/api/contactus', methods=['GET', 'POST'])
-# def contactus():
-#     CD = request.json['contact']
-#     newContactMess = Contact(name=CD["name"], email=CD["email"], city=CD["city"], contactnum=CD["contactnum"],
-#                              product=CD["product"], message=CD["message"])
-#     db.session.add(newContactMess)
-#     db.session.commit()
-#     return jsonify({"contact": "success"})
->>>>>>> f1d168ad1e4287d1822bc8038fce6134d38e0806
