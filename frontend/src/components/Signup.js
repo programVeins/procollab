@@ -5,7 +5,7 @@ import '../themes/login.css'
 import { Button, FormFeedback, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { MenuItem, Select } from "@material-ui/core";
 
-const backEndUrl = "http://localhost:5000"
+const backEndUrl = "https://procollab-backeed.herokuapp.com/"
 
 export default class SignUp extends Component {
 
