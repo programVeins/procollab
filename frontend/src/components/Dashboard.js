@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner, Toast, ToastBody, ToastHeader} from 'reactstrap'
 import axios from 'axios';
 
-const backEndUrl = "http://localhost:5000"
+const backEndUrl = "https://procollab-backeed.herokuapp.com/"
 
 export default function Dashboard(props) {
 
