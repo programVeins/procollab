@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from 'react-router-dom';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Spinner } from 'reactstrap';
 import '../themes/login.css'
 import axios from 'axios';
 
@@ -87,34 +87,38 @@ export default class Signin extends Component {
         return (
         <div className="profile-wrapper-l">
             <div className="profile-inner">
-                <form onSubmit={this.handleSubmit}>
-                    <h3 className="font-bold">Sign In</h3>
-                    <br/>
-                    <div className="form-group">
-                        <label>Email address</label>
-                        <input type="email" name="email" id="email" className="form-control"
-                        placeholder="Enter email" onChange={this.handleInputChange}/>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" id="password" className="form-control"
-                        placeholder="Enter password" onChange={this.handleInputChange}/>
-                    </div>
-
-                    <div className="form-group">
-                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                            <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                {
+                    this.state.loading ? <Spinner className="spinner" color="danger" size="lg"/> :
+                    <form onSubmit={this.handleSubmit}>
+                        <h3 className="font-bold">Sign In</h3>
+                        <br/>
+                        <div className="form-group">
+                            <label>Email address</label>
+                            <input type="email" name="email" id="email" className="form-control"
+                            placeholder="Enter email" onChange={this.handleInputChange}/>
                         </div>
-                    </div>
 
-                    <button type="submit" className="btn btn-danger btn-block">Sign In</button>
-                    <br/>
-                    <p className="forgot-password text-right">
-                        Don't have an account? <Link to="/signup" className="links">Sign Up</Link>
-                    </p>
-                </form>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" id="password" className="form-control"
+                            placeholder="Enter password" onChange={this.handleInputChange}/>
+                        </div>
+
+                        <div className="form-group">
+                            <div className="custom-control custom-checkbox">
+                                <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                                <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" className="btn btn-danger btn-block">Sign In</button>
+                        <br/>
+                        <p className="forgot-password text-right">
+                            Don't have an account? <Link to="/signup" className="links">Sign Up</Link>
+                        </p>
+                    </form>
+                }
+                
             </div>
             <Modal isOpen={this.state.toggle} toggle={this.toggler}>
                 <ModalHeader toggle={this.toggler}>Error</ModalHeader>

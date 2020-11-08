@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import '../themes/login.css'
-import { Button, FormFeedback, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Button, FormFeedback, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Spinner } from "reactstrap";
 import { MenuItem, Select } from "@material-ui/core";
 
 const backEndUrl = "https://procollab-backeed.herokuapp.com/"
@@ -139,6 +139,8 @@ export default class SignUp extends Component {
         return (
             <div className="profile-wrapper">
                 <div className="profile-inner">
+                  {
+                    this.state.loading ? <Spinner className="spinner" color="danger" size="lg"/> :
                     <form onSubmit={this.handleSubmit}>
                         <h2 className="font-bold">Sign Up</h2>
                         <div className="form-group">
@@ -233,6 +235,8 @@ export default class SignUp extends Component {
                         Already have an account? <Link to="/signin" className="links">Sign In</Link>
                         </p>
                     </form>
+                  }
+                    
                 </div>
                 <Modal isOpen={this.state.toggle} toggle={this.toggler}>
                     <ModalHeader toggle={this.toggler}>Error</ModalHeader>
