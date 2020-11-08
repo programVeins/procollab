@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner, Toast, ToastBody, ToastHeader} from 'reactstrap'
 import axios from 'axios';
 
-const backEndUrl = "https://procollab-backeed.herokuapp.com/"
+const backEndUrl = "http://localhost:5000"
 
 export default function Dashboard(props) {
 
@@ -83,7 +83,7 @@ export default function Dashboard(props) {
                 </div>
                 <hr/>
                 {
-                    !loading? <Spinner className="text-center mt-5" color="danger" size="lg"/> : null
+                    loading? <Spinner className="text-center mt-5" color="danger" size="lg"/> : null
                 }
                 {
                     projects.map((p,i) => {
@@ -113,14 +113,14 @@ export default function Dashboard(props) {
                 <Modal isOpen={modal} toggle={toggler}>
                     <ModalHeader toggle={toggler}>More Details</ModalHeader>
                     <ModalBody>
-                        <h4>User Details</h4>
+                        <h4 className="mb-3 un">User Details</h4>
                         <h6>First Name : {selectedUser.firstname}</h6>
                         <h6>Last Name : {selectedUser.lastname}</h6>
                         <h6>Department: {depts[selectedUser.dept - 1]}</h6>
                         <h6>Role : {selectedUser.isstud ? "Student" : "Faculty"}</h6>
                         <h6>Contact Email : {selectedUser.email}</h6>
                         <br/>
-                        <h4>Position Details</h4>
+                        <h4 className="mb-3 un">Position Details</h4>
                         <h6>Position Needed: {selectedPos.name}</h6>
                         <h6>Position Description: {selectedPos.desc}</h6>
                     </ModalBody>
