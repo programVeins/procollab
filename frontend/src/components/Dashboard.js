@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastBody, ToastHeader} from 'reactstrap'
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner, Toast, ToastBody, ToastHeader} from 'reactstrap'
 import axios from 'axios';
 
 const backEndUrl = "https://procollab-backeed.herokuapp.com/"
@@ -18,6 +18,7 @@ export default function Dashboard(props) {
         "Biomedical Engineering"
     ]
 
+    const [loading, setLoading] = useState(false)
     const [redirect, setRedirect] = useState(false)
     const [modal, setmodal] = useState(false)
     const [projects, setProjects] = useState([])
@@ -27,13 +28,18 @@ export default function Dashboard(props) {
     const [positions, setPositions] = useState([])
 
     useEffect(() => {
+        setLoading(true)
         axios.get(backEndUrl + '/api/projdeets')
         .then(res => {
             setProjects(res.data.projects)
             setUsers(res.data.users)
             setPositions(res.data.positions)
+            setLoading(false)
         })
-        .catch(err => console.log(err.mess))
+        .catch(err => {
+            console.log(err.mess)
+            setLoading(false)
+        })
         
     }, [])
 
@@ -76,6 +82,9 @@ export default function Dashboard(props) {
                     onClick={logout}>Logout</Button>
                 </div>
                 <hr/>
+                {
+                    !loading? <Spinner className="text-center mt-5" color="danger" size="lg"/> : null
+                }
                 {
                     projects.map((p,i) => {
                         return (
