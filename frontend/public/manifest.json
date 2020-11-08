@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ProCollab",
+  "name": "Procollab powered by React",
   "icons": [
     {
       "src": "favicon.ico",
