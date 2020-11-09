@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import Admin from './Admin'
 import Dashboard from './Dashboard'
 import Signin from './Signin'
 import Signup from './Signup'
@@ -20,6 +21,9 @@ export default function Main() {
                 </Route>
                 <Route exact path="/dashboard">
                     <Dashboard isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+                </Route>
+                <Route exact path="/admin">
+                    <Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
                 </Route>
             </Switch>
         </div>
