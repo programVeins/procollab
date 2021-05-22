@@ -2,7 +2,7 @@ import { Table , TableBody, TableCell, TableHead, TableRow } from '@material-ui/
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const backEndUrl = "https://procollab-backeed.herokuapp.com/"
+const backEndUrl = "https://procollab-backend.herokuapp.com/"
 
 export default function Admin() {
 
@@ -30,7 +30,7 @@ export default function Admin() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(backEndUrl + '/api/projdeets')
+        axios.get(backEndUrl + 'api/projdeets')
         .then(res => {
             setProjects(res.data.projects)
             setUsers(res.data.users)

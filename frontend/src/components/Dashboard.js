@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner, Toast, ToastBody, ToastHeader} from 'reactstrap'
 import axios from 'axios';
 
-const backEndUrl = "https://procollab-backeed.herokuapp.com/"
+const backEndUrl = "https://procollab-backend.herokuapp.com/"
 
 export default function Dashboard(props) {
 
@@ -29,7 +29,7 @@ export default function Dashboard(props) {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(backEndUrl + '/api/projdeets')
+        axios.get(backEndUrl + 'api/projdeets')
         .then(res => {
             setProjects(res.data.projects)
             setUsers(res.data.users)

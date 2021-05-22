@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Spinner } from 'rea
 import '../themes/login.css'
 import axios from 'axios';
 
-const backEndUrl = "https://procollab-backeed.herokuapp.com/"
+const backEndUrl = "https://procollab-backend.herokuapp.com/"
 
 export default class Signin extends Component {
 
@@ -46,7 +46,7 @@ export default class Signin extends Component {
             email: this.state.email,
             password: this.state.password
             }
-            axios.post(backEndUrl + '/api/postlogin', { userData })
+            axios.post(backEndUrl + 'api/postlogin', { userData })
             .then(res => {  
                 if (res.data.auth === 10) {
                 this.setState({modalmess: 'You are already logged in'});

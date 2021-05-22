@@ -99,9 +99,9 @@ def projdeets():
         "positions" : positions_final
         })
 
-    @app.route('/api/load')
-    def load():
-        return jsonify({"load": "success"})
+@app.route('/api/load')
+def load():
+    return jsonify({"load": "success"})
 
 
 

@@ -5,7 +5,7 @@ import '../themes/login.css'
 import { Button, FormFeedback, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Spinner } from "reactstrap";
 import { MenuItem, Select } from "@material-ui/core";
 
-const backEndUrl = "https://procollab-backeed.herokuapp.com/"
+const backEndUrl = "https://procollab-backend.herokuapp.com/"
 
 export default class SignUp extends Component {
 
@@ -76,7 +76,7 @@ export default class SignUp extends Component {
             isstud: (this.state.isStud === 'true') ? true : false
           }
       
-          axios.post(backEndUrl + '/api/postsignup', { userData })
+          axios.post(backEndUrl + 'api/postsignup', { userData })
             .then(res => {  
                 if (res.data.error === 1) {
                   this.setState({modalmess: "Email already exists."});
